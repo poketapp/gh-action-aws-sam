@@ -1,6 +1,9 @@
 name: "AWS SAM CLI"
 description: "Github Action to enable AWS SAM CLI"
 author: "Naba S. Siddiqui"
+branding:
+  icon: 'upload-cloud'
+  color: 'green'
 inputs:
         sam_version:
                 description: "AWS SAM version to install"
