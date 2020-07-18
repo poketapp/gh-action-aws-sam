@@ -36,3 +36,6 @@ jobs:
 ### `AWS_STACK_NAME` **Required**
 
 It is recommended to store all of the environment variables in Github secrets.
+
+---
+This project was inspired by [falnyr/aws-sam-deploy-action](https://github.com/falnyr/aws-sam-deploy-action) which performed 2/3 SAM actions for our use case (`package` and `deploy`) but not `build`.
