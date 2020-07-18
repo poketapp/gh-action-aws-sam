@@ -1,10 +1,5 @@
 #!/bin/sh -l
 
-if [ "${INPUT_SAM_CMD}" == "" ]; then
-	echo "Input sam_cmd cannot be empty"
-	exit 1
-fi
-
 if [[ -z "$AWS_STACK_NAME" ]]; then
     echo "Missing AWS Stack Name"
     exit 1
