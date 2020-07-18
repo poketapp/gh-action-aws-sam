@@ -4,10 +4,6 @@ author: "Naba S. Siddiqui"
 branding:
   icon: 'upload-cloud'
   color: 'green'
-inputs:
-        sam_version:
-                description: "AWS SAM version to install"
-                default: "latest"
 runs:
-        using: "docker"
-        image: "./Dockerfile"
+  using: "docker"
+  image: "./Dockerfile"

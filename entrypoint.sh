@@ -31,23 +31,6 @@ else
     CAPABILITIES="--capabilities $CAPABILITIES"
 fi
 
-# Install AWS SAM CLI
-if [ "${INPUT_SAM_VERSION}" == "latest" ]; then
-	pip install aws-sam-cli >/dev/null 2>&1
-	if [ "${?}" -ne 0 ]; then
-		echo "Failed to install aws-sam-cli ${INPUT_SAM_VERSION}"
-	else
-		echo "Successfully installed aws-sam-cli ${INPUT_SAM_VERSION}"
-	fi
-else
-	pip install aws-sam-cli==${INPUT_SAM_VERSION} >/dev/null 2>&1
-	if [ "${?}" -ne 0 ]; then
-		echo "Failed to install aws-sam-cli ${INPUT_SAM_VERSION}"
-	else
-		echo "Successfully installed aws-sam-cli ${INPUT_SAM_VERSION}"
-	fi
-fi
-
 mkdir ~/.aws
 touch ~/.aws/credentials
 touch ~/.aws/config
