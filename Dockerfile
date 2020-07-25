@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk --update --no-cache add jq curl bash gcc musl-dev
+RUN apk --update --no-cache add jq curl bash gcc musl-dev py-pip
 
 COPY entrypoint.sh /entrypoint.sh
 
