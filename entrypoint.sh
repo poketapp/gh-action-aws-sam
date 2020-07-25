@@ -1,31 +1,31 @@
 #!/bin/sh -l
 
-if [[ -z "$AWS_STACK_NAME" ]]; then
+if [ -z "$AWS_STACK_NAME" ]; then
     echo "Missing AWS Stack Name"
     exit 1
 fi
 
-if [[ -z "$AWS_ACCESS_KEY_ID" ]]; then
+if [ -z "$AWS_ACCESS_KEY_ID" ]; then
     echo "Missing AWS Access Key Id"
     exit 1
 fi
 
-if [[ -z "$AWS_SECRET_ACCESS_KEY" ]]; then
+if [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
     echo "Missing AWS Secret Access Key"
     exit 1
 fi
 
-if [[ -z "$AWS_REGION" ]]; then
+if [ -z "$AWS_REGION" ]; then
     echo "Missing AWS Region"
     exit 1
 fi
 
-if [[ -z "$AWS_DEPLOY_BUCKET" ]]; then
+if [ -z "$AWS_DEPLOY_BUCKET" ]; then
     echo "Missing AWS Deploy Bucket"
     exit 1
 fi
 
-if [[ -z "$CAPABILITIES" ]]; then
+if [ -z "$CAPABILITIES" ]; then
     CAPABILITIES="--capabilities CAPABILITY_IAM"
 else
     CAPABILITIES="--capabilities $CAPABILITIES"
@@ -50,7 +50,7 @@ pip install aws-sam-cli >/dev/null 2>&1
 if [ "${?}" -ne 0 ]; then
     echo "Failed to install aws-sam-cli"
 else
-    echo "Successful install aws-sam-cli"
+    echo "Successfully installed aws-sam-cli"
 fi
 
 sam build
