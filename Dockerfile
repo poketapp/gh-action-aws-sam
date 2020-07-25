@@ -1,6 +1,7 @@
-FROM alpine:latest
+FROM ubuntu:18.04
 
-RUN apk --update --no-cache add jq curl bash gcc musl-dev py-pip
+RUN apt-get update -y
+RUN apt-get install -y python-pip
 
 COPY entrypoint.sh /entrypoint.sh
 
