@@ -43,6 +43,14 @@ region = $AWS_REGION" > ~/.aws/credentials
 echo "[default]
 region = $AWS_REGION" > ~/.aws/config
 
+echo "Install aws-sam-cli"
+pip install aws-sam-cli >/dev/null 2>&1
+if [ "${?}" -ne 0 ]; then
+    echo "Failed to install aws-sam-cli"
+else
+    echo "Successful install aws-sam-cli"
+fi
+
 sam build
 sam package --output-template-file packaged.yaml --s3-bucket $AWS_DEPLOY_BUCKET
 sam deploy --template-file packaged.yaml --stack-name $AWS_STACK_NAME $CAPABILITIES
