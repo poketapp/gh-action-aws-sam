@@ -43,9 +43,12 @@ region = $AWS_REGION" > ~/.aws/credentials
 echo "[default]
 region = $AWS_REGION" > ~/.aws/config
 
+echo "Install aws-cli"
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+unzip awscli-bundle.zip
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+
 echo "Install aws-sam-cli"
-python --version
-pip --version
 pip install aws-sam-cli >/dev/null 2>&1
 if [ "${?}" -ne 0 ]; then
     echo "Failed to install aws-sam-cli"
