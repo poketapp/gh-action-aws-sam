@@ -43,6 +43,6 @@ region = $AWS_REGION" > ~/.aws/credentials
 echo "[default]
 region = $AWS_REGION" > ~/.aws/config
 
-sam build --use-container
+sam build
 sam package --output-template-file packaged.yaml --s3-bucket $AWS_DEPLOY_BUCKET
 sam deploy --template-file packaged.yaml --stack-name $AWS_STACK_NAME $CAPABILITIES
