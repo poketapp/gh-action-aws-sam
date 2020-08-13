@@ -1,8 +1,5 @@
 #!/bin/sh -l
 
-export LC_ALL=en_US.utf-8
-export LANG=en_US.utf-8
-
 if [ -z "$AWS_STACK_NAME" ]; then
     echo "Missing AWS Stack Name"
     exit 1
