@@ -44,7 +44,7 @@ echo "[default]
 region = $AWS_REGION" > ~/.aws/config
 
 echo "Install aws-cli"
-pip install awscli >/dev/null 2>&1
+pip3 install awscli >/dev/null 2>&1
 if [ "${?}" -ne 0 ]; then
     echo "Failed to install aws-cli"
 else
@@ -56,7 +56,7 @@ export PATH=$HOME/.local/bin:$PATH
 aws --version
 
 echo "Install aws-sam-cli"
-pip install aws-sam-cli >/dev/null 2>&1
+pip3 install aws-sam-cli >/dev/null 2>&1
 if [ "${?}" -ne 0 ]; then
     echo "Failed to install aws-sam-cli"
 else
