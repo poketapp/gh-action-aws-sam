@@ -31,8 +31,6 @@ else
     CAPABILITIES="--capabilities $CAPABILITIES"
 fi
 
-sudo rm ~/.cache/pip 
-
 mkdir ~/.aws
 touch ~/.aws/credentials
 touch ~/.aws/config
