@@ -63,6 +63,6 @@ else
     echo "Successfully installed aws-sam-cli"
 fi
 
-sam build
+sam build --debug
 sam package --output-template-file packaged.yaml --s3-bucket $AWS_DEPLOY_BUCKET
 sam deploy --template-file packaged.yaml --stack-name $AWS_STACK_NAME $CAPABILITIES
