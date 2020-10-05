@@ -31,6 +31,10 @@ else
     CAPABILITIES="--capabilities $CAPABILITIES"
 fi
 
+sudo chown -R root ~/tmp
+sudo chown -R root /home/$USER/.cache/pip/
+sudo chown -R root /home/$USER/.cache/pip/http/
+
 mkdir ~/.aws
 touch ~/.aws/credentials
 touch ~/.aws/config
