@@ -31,6 +31,8 @@ else
     CAPABILITIES="--capabilities $CAPABILITIES"
 fi
 
+sudo chown -R $USER /github/home/.cache
+
 mkdir ~/.aws
 touch ~/.aws/credentials
 touch ~/.aws/config
