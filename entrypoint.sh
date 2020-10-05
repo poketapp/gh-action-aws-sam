@@ -31,6 +31,8 @@ else
     CAPABILITIES="--capabilities $CAPABILITIES"
 fi
 
+sudo chown -R $USER ~/tmp/
+
 mkdir ~/.aws
 touch ~/.aws/credentials
 touch ~/.aws/config
