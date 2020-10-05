@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: sam build
-      uses: poketapp/gh-action-aws-sam@v2
+      uses: poketapp/gh-action-aws-sam@v1
       env:
         AWS_REGION: 'eu-west-2'
         AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
@@ -26,11 +26,6 @@ jobs:
         AWS_DEPLOY_BUCKET: ${{secrets.AWS_DEPLOY_BUCKET}}
         AWS_STACK_NAME: ${{secrets.AWS_STACK_NAME}}
 ```
-
-## Version
-
-### v1 runs AWS SAM against Python 2
-### v2 runs AWS SAM against Python 3
 
 ## Env
 
