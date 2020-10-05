@@ -31,7 +31,7 @@ else
     CAPABILITIES="--capabilities $CAPABILITIES"
 fi
 
-sudo chown -R $USER ~/tmp/
+sudo rm ~/.cache/pip 
 
 mkdir ~/.aws
 touch ~/.aws/credentials
