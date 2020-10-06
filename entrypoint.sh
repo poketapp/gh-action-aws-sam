@@ -31,10 +31,6 @@ else
     CAPABILITIES="--capabilities $CAPABILITIES"
 fi
 
-echo "User is `whoami`"
-echo "Username is $USERNAME"
-sudo chown -R $USERNAME /github/home/.cache
-
 mkdir ~/.aws
 touch ~/.aws/credentials
 touch ~/.aws/config
