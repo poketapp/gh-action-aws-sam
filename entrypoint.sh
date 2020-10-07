@@ -34,7 +34,7 @@ fi
 if [ -z "$AWS_PARAMETERS" ]; then
     AWS_PARAMETERS="--parameter-overrides $AWS_PARAMETERS"
 else
-    AWS_PARAMETERS="--parameter-overrides $AWS_PARAMETERS"
+    AWS_PARAMETERS=""
 fi
 
 mkdir ~/.aws
