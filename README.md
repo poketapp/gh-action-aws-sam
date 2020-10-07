@@ -23,8 +23,9 @@ jobs:
         AWS_REGION: 'eu-west-2'
         AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
         AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-        AWS_DEPLOY_BUCKET: ${{secrets.AWS_DEPLOY_BUCKET}}
-        AWS_STACK_NAME: ${{secrets.AWS_STACK_NAME}}
+        AWS_DEPLOY_BUCKET: 'test-s3-bucket'
+        AWS_STACK_NAME: 'Test-Stack'
+        AWS_PARAMETERS: 'ParameterKey=KeyPairName ParameterValue=MyKey'
 ```
 
 ## Env
@@ -34,8 +35,9 @@ jobs:
 ### `AWS_REGION` **Required**
 ### `AWS_DEPLOY_BUCKET` **Required**
 ### `AWS_STACK_NAME` **Required**
+### `AWS_PARAMETERS` **Optional**
 
-It is recommended to store all of the environment variables in Github secrets.
+It is recommended to store access key id and secret access key in Github secrets.
 
 ---
 ### Attributes
