@@ -31,12 +31,6 @@ else
     CAPABILITIES="--capabilities $CAPABILITIES"
 fi
 
-if [ -z "$AWS_PARAMETERS" ]; then
-    AWS_PARAMETERS="--parameter-overrides $AWS_PARAMETERS"
-else
-    AWS_PARAMETERS=""
-fi
-
 mkdir ~/.aws
 touch ~/.aws/credentials
 touch ~/.aws/config
@@ -71,4 +65,4 @@ fi
 
 sam build
 sam package --output-template-file packaged.yaml --s3-bucket $AWS_DEPLOY_BUCKET
-sam deploy --template-file packaged.yaml --stack-name $AWS_STACK_NAME $CAPABILITIES $AWS_PARAMETERS
+sam deploy --template-file packaged.yaml --stack-name $AWS_STACK_NAME $CAPABILITIES
