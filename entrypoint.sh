@@ -45,32 +45,22 @@ region = $AWS_REGION" > ~/.aws/credentials
 echo "[default]
 region = $AWS_REGION" > ~/.aws/config
 
-echo "Install aws-cli"
-pip3 install awscli >/dev/null 2>&1
+echo "Install dependencies"
+pip3 install awscli aws-sam-cli pytest pytest-mock boto3 botocore >/dev/null 2>&1
 if [ "${?}" -ne 0 ]; then
-    echo "Failed to install aws-cli"
+    echo "Failed to install dependencies"
 else
-    echo "Successfully installed aws-cli"
+    echo "Successfully installed dependencies"
 fi
 
 export PATH=$HOME/.local/bin:$PATH
 
-aws --version
-
-echo "Install aws-sam-cli"
-pip3 install aws-sam-cli >/dev/null 2>&1
-if [ "${?}" -ne 0 ]; then
-    echo "Failed to install aws-sam-cli"
-else
-    echo "Successfully installed aws-sam-cli"
-fi
-
 if [ -n "$AWS_LOCAL_START_LAMBDA" ]; then
     sam build
     sam local start-lambda &
+    python -m pytest $PYTHON_TEST_DIR -v
 else
     sam build
     sam package --output-template-file packaged.yaml --s3-bucket $AWS_DEPLOY_BUCKET
     sam deploy --template-file packaged.yaml --stack-name $AWS_STACK_NAME $CAPABILITIES
 fi
-
