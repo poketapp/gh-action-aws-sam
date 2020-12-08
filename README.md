@@ -1,8 +1,12 @@
 # AWS SAM CLI Github Action
 
-This action allows you to build, package and deploy an AWS SAM application in one go. 
+This action supports the following capabalities:
+1. Build, package and deploy an AWS SAM application in one go
+2. Build an AWS SAM application and start the Lambda functions for local invocations
 
-For example, you can use it to build, package and deploy a SAM application all in one workflow
+### Build, package and deploy an AWS SAM application
+
+Use the following workflow to build, package and deploy an AWS SAM application
 
 ```
 name: Example CD workflow
@@ -25,22 +29,47 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
         AWS_DEPLOY_BUCKET: 'test-s3-bucket'
         AWS_STACK_NAME: 'Test-Stack'
-        AWS_PARAMETERS: 'ParameterKey=KeyPairName ParameterValue=MyKey'
 ```
 
-## Env
+### Invoke Lambda function(s) locally
 
-### `AWS_ACCESS_KEY_ID` **Required**
-### `AWS_SECRET_ACCESS_KEY` **Required**
-### `AWS_REGION` **Required**
-### `AWS_DEPLOY_BUCKET` **Required**
-### `AWS_STACK_NAME` **Required**
-### `AWS_PARAMETERS` **Optional**
+Use the following workflow to invoke Lambda function(s) locally
+
+```
+name: Example CD workflow
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: sam build
+      uses: poketapp/gh-action-aws-sam@v1
+      env:
+        AWS_REGION: 'ca-central-1'
+        AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+        AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+        AWS_LOCAL_START_LAMBDA: 'True'
+```
+
+### Environment variables
+
+#### `AWS_ACCESS_KEY_ID` **Required**
+#### `AWS_SECRET_ACCESS_KEY` **Required**
+#### `AWS_REGION` **Required**
+#### `AWS_DEPLOY_BUCKET` **Required**
+#### `AWS_STACK_NAME` **Required**
+#### `AWS_LOCAL_START_LAMBDA` **Optional** Set this variable to a non-empty value if you want to 
 
 It is recommended to store access key id and secret access key in Github secrets.
 
 ---
-### Attributes
-Some of the elements of this project were borrowed from:
+#### Attributes
+Some of the elements of this project were inspired by:
 - [falnyr/aws-sam-deploy-action](https://github.com/falnyr/aws-sam-deploy-action) 
 - [youyo/aws-sam-action](https://github.com/youyo/aws-sam-action)

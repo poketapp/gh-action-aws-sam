@@ -63,6 +63,12 @@ else
     echo "Successfully installed aws-sam-cli"
 fi
 
-sam build
-sam package --output-template-file packaged.yaml --s3-bucket $AWS_DEPLOY_BUCKET
-sam deploy --template-file packaged.yaml --stack-name $AWS_STACK_NAME $CAPABILITIES
+if [ -n "$AWS_LOCAL_START_LAMBDA" ]; then
+    sam build --use-container
+    sam local start-lambda
+else
+    sam build
+    sam package --output-template-file packaged.yaml --s3-bucket $AWS_DEPLOY_BUCKET
+    sam deploy --template-file packaged.yaml --stack-name $AWS_STACK_NAME $CAPABILITIES
+fi
+
