@@ -1,10 +1,5 @@
 #!/bin/sh -l
 
-if [ -z "$AWS_STACK_NAME" ]; then
-    echo "Missing AWS Stack Name"
-    exit 1
-fi
-
 if [ -z "$AWS_ACCESS_KEY_ID" ]; then
     echo "Missing AWS Access Key Id"
     exit 1
@@ -20,9 +15,16 @@ if [ -z "$AWS_REGION" ]; then
     exit 1
 fi
 
-if [ -z "$AWS_DEPLOY_BUCKET" ]; then
-    echo "Missing AWS Deploy Bucket"
-    exit 1
+if [ -z "$AWS_LOCAL_START_LAMBDA" ]; then
+    if [ -z "$AWS_STACK_NAME" ]; then
+        echo "Missing AWS Stack Name"
+        exit 1
+    fi
+
+    if [ -z "$AWS_DEPLOY_BUCKET" ]; then
+        echo "Missing AWS Deploy Bucket"
+        exit 1
+    fi
 fi
 
 if [ -z "$CAPABILITIES" ]; then
