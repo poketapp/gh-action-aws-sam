@@ -57,15 +57,6 @@ jobs:
         AWS_LOCAL_START_LAMBDA: 'True'
 ```
 
-### Environment variables
-
-#### `AWS_ACCESS_KEY_ID` **Required**
-#### `AWS_SECRET_ACCESS_KEY` **Required**
-#### `AWS_REGION` **Required**
-#### `AWS_DEPLOY_BUCKET` **Required**
-#### `AWS_STACK_NAME` **Required**
-#### `AWS_LOCAL_START_LAMBDA` **Optional** Set this variable to a non-empty value if you want to 
-
 It is recommended to store access key id and secret access key in Github secrets.
 
 ---
