@@ -66,7 +66,7 @@ else
 fi
 
 if [ -n "$AWS_LOCAL_START_LAMBDA" ]; then
-    sam build --use-container
+    sam build
     sam local start-lambda
 else
     sam build
