@@ -67,7 +67,7 @@ fi
 
 if [ -n "$AWS_LOCAL_START_LAMBDA" ]; then
     sam build
-    sam local start-lambda
+    sam local start-lambda &
 else
     sam build
     sam package --output-template-file packaged.yaml --s3-bucket $AWS_DEPLOY_BUCKET
