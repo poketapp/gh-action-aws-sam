@@ -67,6 +67,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
         AWS_DEPLOY_BUCKET: 'test-s3-bucket'
         AWS_STACK_NAME: 'Test-Stack'
+        AWS_PARAMETER_OVERRIDES: 'KeyPairName=MyKey InstanceType=t1.micro'
 ```
 
 ### Environment variables
@@ -74,5 +75,6 @@ jobs:
 * `AWS_ACCESS_KEY_ID`: This is a *required* property
 * `AWS_SECRET_ACCESS_KEY`: This is a *required* property
 * `DEBUG_MODE`: This is an *optional* property and setting it runs `sam build` in debug mode
+* `AWS_PARAMETER_OVERRIDES`: This is an *optional* property and is passed in to the `--parameter-overrides` option in `sam build`
 
 It is recommended to store access key id and secret access key in Github secrets.
