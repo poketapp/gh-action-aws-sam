@@ -40,11 +40,10 @@ else
 fi
 
 if [ -n "$AWS_PARAMETER_OVERRIDES" ]; then
-    AWS_PARAMETER_OVERRIDES="--parameter-overrides $AWS_PARAMETER_OVERRIDES"
+    AWS_PARAMETER_OVERRIDES="--parameter-overrides '$AWS_PARAMETER_OVERRIDES'"
 else
     AWS_PARAMETER_OVERRIDES=""
 fi
-echo "Parameter overrides is $AWS_PARAMETER_OVERRIDES"
 
 mkdir ~/.aws
 touch ~/.aws/credentials
