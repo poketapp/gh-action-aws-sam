@@ -63,7 +63,7 @@ export PATH=$HOME/.local/bin:$PATH
 
 if [ -n "$AWS_LOCAL_START_LAMBDA" ]; then
     sam build $DEBUG_MODE
-    sudo sam local start-lambda --docker-network host &
+    sam local start-lambda $DEBUG_MODE --docker-network host &
     python3 -m pytest $PYTHON_TEST_DIR -v
 else
     sam build $DEBUG_MODE
