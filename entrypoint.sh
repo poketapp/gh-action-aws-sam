@@ -52,7 +52,7 @@ echo "[default]
 region = $AWS_REGION" > ~/.aws/config
 
 echo "Install dependencies"
-pip3 install awscli aws-sam-cli pytest pytest-mock boto3 botocore >/dev/null 2>&1
+pip3 install setuptools wheel awscli aws-sam-cli pytest pytest-mock boto3 botocore >/dev/null 2>&1
 if [ "${?}" -ne 0 ]; then
     echo "Failed to install dependencies"
 else
