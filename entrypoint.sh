@@ -63,8 +63,7 @@ export PATH=$HOME/.local/bin:$PATH
 
 if [ -n "$INTEGRATION_TEST_MODE" ]; then
     sam build $DEBUG_MODE
-    sam local start-lambda --host '0.0.0.0' $DEBUG_MODE &
-    python3 -m pytest $PYTHON_TEST_DIR -v
+    sam local start-lambda --docker-network host $DEBUG_MODE &
 else
     sam build $DEBUG_MODE
     sam package --output-template-file packaged.yaml --s3-bucket $AWS_DEPLOY_BUCKET
