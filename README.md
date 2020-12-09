@@ -5,7 +5,7 @@ This action supports the following capabalities:
 
 ### Run integration tests
 In addition, to the required environment variables, set the following environment variables in your job:
-- **AWS_LOCAL_START_LAMBDA**: Set it to any value
+- **INTEGRATION_TEST_MODE**: Set it to any value
 - **PYTHON_TEST_DIR**: Set it to the name of the test directory which has integration tests you want to run the app against. As an example, the value for the following project will be `tests/integration/dev/`
 ```
 .
@@ -39,7 +39,7 @@ jobs:
         AWS_REGION: 'ca-central-1'
         AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
         AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-        AWS_LOCAL_START_LAMBDA: 'True'
+        INTEGRATION_TEST_MODE: 'True'
         PYTHON_TEST_DIR: 'tests/integration/dev'
 ```
 

@@ -15,7 +15,7 @@ if [ -z "$AWS_REGION" ]; then
     exit 1
 fi
 
-if [ -z "$AWS_LOCAL_START_LAMBDA" ]; then
+if [ -z "$INTEGRATION_TEST_MODE" ]; then
     if [ -z "$AWS_STACK_NAME" ]; then
         echo "Missing AWS Stack Name"
         exit 1
@@ -61,7 +61,7 @@ fi
 
 export PATH=$HOME/.local/bin:$PATH
 
-if [ -n "$AWS_LOCAL_START_LAMBDA" ]; then
+if [ -n "$INTEGRATION_TEST_MODE" ]; then
     sam build $DEBUG_MODE
     sam local start-lambda $DEBUG_MODE &
     python3 -m pytest $PYTHON_TEST_DIR -v
