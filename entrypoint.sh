@@ -39,6 +39,12 @@ else
     DEBUG_MODE=""
 fi
 
+if [ -n "$AWS_PARAMETER_OVERRIDES" ]; then
+    AWS_PARAMETER_OVERRIDES="--parameter-overrides $AWS_PARAMETER_OVERRIDES"
+else
+    AWS_PARAMETER_OVERRIDES=""
+fi
+
 mkdir ~/.aws
 touch ~/.aws/credentials
 touch ~/.aws/config
