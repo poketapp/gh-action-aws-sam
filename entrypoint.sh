@@ -33,6 +33,12 @@ else
     CAPABILITIES="--capabilities $CAPABILITIES"
 fi
 
+if [ -n "$DEBUG_MODE" ]; then
+    DEBUG_MODE="--debug"
+else
+    DEBUG_MODE=""
+fi
+
 mkdir ~/.aws
 touch ~/.aws/credentials
 touch ~/.aws/config
@@ -56,11 +62,11 @@ fi
 export PATH=$HOME/.local/bin:$PATH
 
 if [ -n "$AWS_LOCAL_START_LAMBDA" ]; then
-    sam build
+    sam build $DEBUG_MODE
     sudo sam local start-lambda --docker-network host &
     python3 -m pytest $PYTHON_TEST_DIR -v
 else
-    sam build
+    sam build $DEBUG_MODE
     sam package --output-template-file packaged.yaml --s3-bucket $AWS_DEPLOY_BUCKET
     sam deploy --template-file packaged.yaml --stack-name $AWS_STACK_NAME $CAPABILITIES
 fi

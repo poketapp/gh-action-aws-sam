@@ -69,4 +69,10 @@ jobs:
         AWS_STACK_NAME: 'Test-Stack'
 ```
 
+### Environment variables
+* `AWS_REGION`:This is a *required* property
+* `AWS_ACCESS_KEY_ID`: This is a *required* property
+* `AWS_SECRET_ACCESS_KEY`: This is a *required* property
+* `DEBUG_MODE`: This is an *optional* property and setting it runs `sam build` in debug mode
+
 It is recommended to store access key id and secret access key in Github secrets.
