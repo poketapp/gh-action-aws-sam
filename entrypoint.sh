@@ -57,7 +57,7 @@ export PATH=$HOME/.local/bin:$PATH
 
 if [ -n "$AWS_LOCAL_START_LAMBDA" ]; then
     sam build
-    sam local start-lambda --host '0.0.0.0' &
+    sudo sam local start-lambda --host '172.17.0.1' &
     python3 -m pytest $PYTHON_TEST_DIR -v
 else
     sam build
