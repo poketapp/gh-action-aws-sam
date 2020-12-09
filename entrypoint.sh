@@ -62,7 +62,7 @@ fi
 export PATH=$HOME/.local/bin:$PATH
 
 if [ -n "$AWS_LOCAL_START_LAMBDA" ]; then
-    sam build --use-container $DEBUG_MODE
+    sam build $DEBUG_MODE
     sam local start-lambda $DEBUG_MODE &
     python3 -m pytest $PYTHON_TEST_DIR -v
 else
