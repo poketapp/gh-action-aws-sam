@@ -72,7 +72,7 @@ if [ -n "$INTEGRATION_TEST_MODE" ]; then
     sam local start-lambda $DEBUG_MODE &
     python3 -m pytest $PYTHON_TEST_DIR -v
 else
-    sam build $DEBUG_MODE
+    sam build $AWS_PARAMETER_OVERRIDES $DEBUG_MODE
     sam package --output-template-file packaged.yaml --s3-bucket $AWS_DEPLOY_BUCKET
     sam deploy --template-file packaged.yaml --stack-name $AWS_STACK_NAME $CAPABILITIES
 fi
