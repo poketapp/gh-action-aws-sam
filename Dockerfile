@@ -7,5 +7,5 @@ ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
 
 COPY entrypoint.sh /entrypoint.sh
-
+EXPOSE 3001/tcp
 ENTRYPOINT ["/entrypoint.sh"]
