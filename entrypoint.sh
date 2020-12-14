@@ -74,5 +74,5 @@ if [ -n "$INTEGRATION_TEST_MODE" ]; then
 else
     sam build $AWS_PARAMETER_OVERRIDES $DEBUG_MODE
     sam package --output-template-file packaged.yaml --s3-bucket $AWS_DEPLOY_BUCKET
-    sam deploy --template-file packaged.yaml --stack-name $AWS_STACK_NAME $CAPABILITIES $AWS_PARAMETER_OVERRIDES
+    sam deploy --template-file packaged.yaml --no-fail-on-empty-changeset --stack-name $AWS_STACK_NAME $CAPABILITIES $AWS_PARAMETER_OVERRIDES
 fi
