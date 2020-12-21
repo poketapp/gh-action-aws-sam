@@ -45,6 +45,12 @@ else
     AWS_PARAMETER_OVERRIDES=""
 fi
 
+if [ -n "$AWS_FAIL_ON_EMPTY_CHANGESET" ]; then
+    AWS_FAIL_ON_EMPTY_CHANGESET="--no-fail-on-empty-changeset"
+else
+    AWS_FAIL_ON_EMPTY_CHANGESET="--fail-on-empty-changeset"
+fi
+
 mkdir ~/.aws
 touch ~/.aws/credentials
 touch ~/.aws/config
@@ -74,5 +80,5 @@ if [ -n "$INTEGRATION_TEST_MODE" ]; then
 else
     sam build $AWS_PARAMETER_OVERRIDES $DEBUG_MODE
     sam package --output-template-file packaged.yaml --s3-bucket $AWS_DEPLOY_BUCKET
-    sam deploy --template-file packaged.yaml --no-fail-on-empty-changeset --stack-name $AWS_STACK_NAME $CAPABILITIES $AWS_PARAMETER_OVERRIDES
+    sam deploy --template-file packaged.yaml --no-fail-on-empty-changeset --stack-name $AWS_STACK_NAME $CAPABILITIES $AWS_PARAMETER_OVERRIDES $AWS_FAIL_ON_EMPTY_CHANGESET
 fi
