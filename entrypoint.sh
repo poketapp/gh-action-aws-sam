@@ -51,6 +51,12 @@ else
     AWS_FAIL_ON_EMPTY_CHANGESET="--no-fail-on-empty-changeset"
 fi
 
+if [ -n "$BASE_DIR" ]; then
+    BASE_DIR="$BASE_DIR"
+else
+    BASE_DIR="./"
+fi
+
 mkdir ~/.aws
 touch ~/.aws/credentials
 touch ~/.aws/config
@@ -72,6 +78,8 @@ else
 fi
 
 export PATH=$HOME/.local/bin:$PATH
+
+cd $BASE_DIR
 
 if [ -n "$INTEGRATION_TEST_MODE" ]; then
     sam build $DEBUG_MODE

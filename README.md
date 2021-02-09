@@ -77,5 +77,6 @@ jobs:
 * `DEBUG_MODE`: This is an *optional* property and setting it runs `sam build` in debug mode
 * `AWS_PARAMETER_OVERRIDES`: This is an *optional* property and is passed in to the `--parameter-overrides` option in `sam deploy`
 * `AWS_FAIL_ON_EMPTY_CHANGESET`: This is an *optional* property and setting it runs `sam deploy` with `--fail-on-empty-changeset`. The default behaviour is to run `sam deploy` with `--no-fail-on-empty-changeset`
+* `BASE_DIR`: This is an *optional* property and setting it changes the base directory to the specified value
 
 It is recommended to store access key id and secret access key in Github secrets.
