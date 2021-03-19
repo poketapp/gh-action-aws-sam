@@ -73,12 +73,6 @@ export PATH=$HOME/.local/bin:$PATH
 
 cd $BASE_DIR
 
-if [ -n "$INTEGRATION_TEST_MODE" ]; then
-    sam build $DEBUG_MODE
-    sam local start-lambda $DEBUG_MODE &
-    python3 -m pytest $PYTHON_TEST_DIR -v
-else
-    sam build $AWS_PARAMETER_OVERRIDES $DEBUG_MODE
-    sam package --output-template-file packaged.yaml --s3-bucket $AWS_DEPLOY_BUCKET
-    sam deploy --template-file packaged.yaml $AWS_FAIL_ON_EMPTY_CHANGESET --stack-name $AWS_STACK_NAME $CAPABILITIES $AWS_PARAMETER_OVERRIDES
-fi
+sam build $AWS_PARAMETER_OVERRIDES $DEBUG_MODE
+sam package --output-template-file packaged.yaml --s3-bucket $AWS_DEPLOY_BUCKET
+sam deploy --template-file packaged.yaml $AWS_FAIL_ON_EMPTY_CHANGESET --stack-name $AWS_STACK_NAME $CAPABILITIES $AWS_PARAMETER_OVERRIDES

@@ -5,8 +5,7 @@ ENV LANG C.UTF-8
 
 RUN apt-get update -y
 RUN apt-get install -y python3-pip curl unzip build-essential libssl-dev libffi-dev python3-dev sudo
-RUN pip3 install setuptools wheel awscli aws-sam-cli pytest pytest-mock boto3 botocore >/dev/null 2>&1
+RUN pip3 install setuptools wheel awscli aws-sam-cli >/dev/null 2>&1
 
 COPY entrypoint.sh /entrypoint.sh
-EXPOSE 443 3001
 ENTRYPOINT ["/entrypoint.sh"]
