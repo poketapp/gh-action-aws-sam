@@ -5,7 +5,7 @@ This action supports the following capabalities:
 ### Build, package and deploy an AWS SAM application
 In addition to the required environment variables, set the following environment variables in your job:
 - **AWS_DEPLOYMENT_BUCKET**: This is the name of the S3 bucket which will contain the deployment package
-- **AWS_STACK_NAME**: This is the name of your CloudFormation stck
+- **AWS_STACK_NAME**: This is the name of your CloudFormation stack
 
 Use the following workflow to build, package and deploy an AWS SAM application
 ```
