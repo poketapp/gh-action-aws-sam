@@ -12,7 +12,7 @@ Use the following workflow to build, package and deploy an AWS SAM application
 name: Example CD workflow
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 jobs:
   build:
     runs-on: ubuntu-latest
