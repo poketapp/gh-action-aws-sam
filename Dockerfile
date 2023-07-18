@@ -5,7 +5,7 @@ ENV LANG C.UTF-8
 
 RUN apt-get update -y
 RUN apt-get install -y python3-pip curl unzip build-essential libssl-dev libffi-dev python3-dev sudo
-RUN pip3 install setuptools wheel awscliv2 aws-sam-cli >/dev/null 2>&1
+RUN pip3 install setuptools wheel awscliv2 aws-sam-cli
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
